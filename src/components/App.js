@@ -3,10 +3,13 @@ import AppHeader from './app-header/app-header';
 import SearchPanel from './search-panel/search-panel';
 import ItemStatusFilter from './item-status-filter/item-status-filter';
 import TodoList from './todo-list/todo-list';
+import ItemAddForm from './item-add-form/item-add-form';
 
 import './App.css'
 
 export default class App extends Component {
+
+    maxId = 1000;
 
     state = {
         todoData: [
@@ -33,6 +36,25 @@ export default class App extends Component {
         })
     }
 
+    addItem = (text) => {
+        //generate id
+        const newItem = {
+            id: this.maxId++,
+            label: text,
+            important: false,
+            completed: false
+        }
+
+        //add el in array
+
+        this.setState(({ todoData }) => {
+            let newTodoData = [...todoData, newItem];
+            return {
+                todoData: newTodoData
+            }
+        })
+    }
+
     render() {
 
         return (
@@ -45,7 +67,9 @@ export default class App extends Component {
                 </div>
 
                 <TodoList todos={ this.state.todoData }
-                          onDeleted={(id) => this.deleteItem(id)}/>
+                          onDeleted={(id) => this.deleteItem(id) } />
+
+                <ItemAddForm onItemAdded={ (text) => this.addItem(text) }/>
             </div>
         )
     }

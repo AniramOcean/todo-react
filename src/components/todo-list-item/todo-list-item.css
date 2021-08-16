@@ -15,10 +15,15 @@
 }
 
 .todo-list-item.completed .todo-list-item-label {
+    color: darkgray;
     text-decoration: line-through;
 }
 
 .todo-list-item.important .todo-list-item-label {
     font-weight: bold;
-    color: steelblue;
+    color: tomato;
+}
+
+.todo-list-item.completed.important .todo-list-item-label {
+    color: darksalmon;
 }

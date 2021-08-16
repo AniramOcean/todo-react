@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './todo-list-item.css'
 
 export default class TodoListItem extends Component {
@@ -6,7 +7,7 @@ export default class TodoListItem extends Component {
     render() {
         const { label, onDeleted, onToggleImportant, onToggleCompleted, completed, important } = this.props;
 
-        let classNames = `todo-list-item ${completed && 'completed'} ${important && 'important'}`;
+        let classNames = `todo-list-item ${completed ? 'completed' : ''} ${important ? 'important' : ''}`;
 
         return (
             <span className={ classNames } >

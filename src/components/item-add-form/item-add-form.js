@@ -4,16 +4,34 @@ import './item-add-form.css'
 
 export default class ItemAddForm extends Component {
 
+    state = {
+        label: ''
+    }
+
+    onLabelChange = (e) => {
+        this.setState({
+            label: e.target.value[0].toUpperCase() + e.target.value.slice(1)
+        })
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.onItemAdded(this.state.label)
+        this.setState({
+            label: ''
+        })
+    }
+
     render() {
 
         return (
-            <form className="item-add-form">
+            <form className="item-add-form d-flex" onSubmit={ this.onSubmit }>
                 <input type="text"
-                       className="form-control"/>
-                <button className="btn btn-outline-secondary"
-                        onClick={ () => this.props.onItemAdded('hello popka') }>
-                    Add Item
-                </button>
+                       className="form-control"
+                       onChange={ this.onLabelChange }
+                       placeholder='Add new to do item'
+                       value={ this.state.label }/>
+                <button className="btn btn-outline-secondary">Add Item</button>
             </form>
         )
     }

@@ -1,3 +1,17 @@
 .item-add-form {
     margin-top: 10px;
 }
+
+.item-add-form input {
+    margin-right: 5px;
+}
+
+.item-add-form button {
+    width: 120px;
+    transition: all .2s linear;
+}
+
+.item-add-form button:hover {
+    background: tomato;
+    border-color: tomato;
+}
